@@ -4,6 +4,7 @@ const chokidar = require("chokidar");
 const debounce = require("lodash.debounce");
 const program = require("caporal");
 const fs = require("fs");
+const { spawn } = require("child_process");
 
 program
 	.version("1.0.0")
@@ -22,7 +23,10 @@ program
 
 		// 使用debounce function实现防抖功能,100ms没有新的文件添加才会调用传入的方程
 		const start = debounce(() => {
-			console.log("PROGRAM START");
+            // 第一个参数是要执行的命令行
+            // 第二个参数是执行的命令的参数
+            // 第三个参数指childprocess执行后得到的log/error等信息能显示出来
+			spawn("node", [file], {stdio: 'inherit'})
 		}, 1000);
 
 		// Detect when a file changes
