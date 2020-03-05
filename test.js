@@ -1,1 +1,3 @@
-console.log("Hi there!sadasdsad");
+setInterval(() => {
+	console.log("Hi, welcome to nodemon simulator!");
+}, 1000);
